@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>Полезное — @toprielt23</title>
+<script src="telegram-web-app.js"></script>
+<script>
+/* ===================================================================
+   МЕНЯЕТЕ ТОЛЬКО ЭТОТ БЛОК
+   Тексты, ссылки, цвета фона. Разметка строится из него автоматически.
+   =================================================================== */
+window.KK_DATA = {
+  bg: "#0A0A0A",            // цвет фона (он же цвет шапки Телеграма)
+  header: {
+    kicker: "Канал @toprielt23",
+    titleLine1: "Недвижимость",
+    titleLine2: "без лишних нервов",
+    description: "Собрала самые полезные посты в одном месте: ипотека, вычеты, переезд в Краснодар. Выбирайте тему и читайте."
+  },
+  cta: {
+    title: "Подбор квартиры под вашу задачу",
+    text: "Расскажите, что ищете, и я соберу варианты с проверенными застройщиками. Консультация бесплатная и ни к чему не обязывает.",
+    button: "Написать в канал",
+    url: "https://t.me/toprielt23"
+  },
+  cardsTitle: "Полезные посты",
+  cards: [
+    { title: "Семейная ипотека 2026",      caption: "кто подходит и какие условия сейчас",        url: "https://t.me/toprielt23" },
+    { title: "Налоговый вычет за квартиру", caption: "как вернуть до 650 000 ₽ по шагам",           url: "https://t.me/toprielt23" },
+    { title: "Куда сходить в Краснодаре",  caption: "места для детей, родителей и всей семьи",    url: "https://t.me/toprielt23" },
+    { title: "Факты о городах",            caption: "13 городов, куда переезжают чаще всего",      url: "https://t.me/toprielt23" },
+    { title: "Как проверить застройщика",  caption: "чек-лист перед подписанием договора",         url: "https://t.me/toprielt23" },
+    { title: "Новости рынка",              caption: "что изменилось в октябре",                    url: "https://t.me/toprielt23" }
+  ],
+  footer: {
+    name: "Анна Коноплянко",
+    school: "Название школы"
+  }
+};
+/* =================== КОНЕЦ БЛОКА ДЛЯ ИЗМЕНЕНИЙ =================== */
+</script>
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --card: #151515;
+    --card-hover: #1C1C1C;
+    --line: #262626;
+    --text: #FFFFFF;
+    --muted: #9A9A9A;
+    --accent: #FF7A1A;
+    --accent-ink: #0A0A0A;
+    --radius: 22px;
+    --font-head: "Unbounded", "Montserrat", "Arial Black", system-ui, sans-serif;
+    --font-text: "Golos Text", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--text); }
+  body {
+    font-family: var(--font-text);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  .wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: calc(40px + env(safe-area-inset-top)) 20px calc(36px + env(safe-area-inset-bottom));
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* 1. Шапка */
+  .kicker {
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: clamp(30px, 8.6vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -.01em;
+    margin-bottom: 16px;
+  }
+  h1 span { display: block; }
+  h1 span + span { color: var(--accent); }
+  .lead { color: var(--muted); font-size: 16px; max-width: 46ch; }
+
+  /* 2. Главный блок */
+  .cta {
+    margin-top: 32px;
+    padding: 26px 22px 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(150deg, #1E1208 0%, #151515 60%);
+    border: 1px solid #3A2410;
+  }
+  .cta h2 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .cta p { color: #CFCFCF; font-size: 15px; margin-bottom: 20px; }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 56px;
+    padding: 14px 20px;
+    border-radius: 16px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 700;
+    font-size: 16px;
+    transition: transform .12s ease, filter .12s ease;
+  }
+  .btn:active { transform: scale(.98); filter: brightness(.95); }
+
+  /* 3. Карточки */
+  .section-title {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 40px 0 14px;
+  }
+  .cards { list-style: none; display: grid; gap: 10px; }
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 18px;
+    border-radius: var(--radius);
+    background: var(--card);
+    border: 1px solid var(--line);
+    transition: background .15s ease, transform .12s ease, border-color .15s ease;
+  }
+  .card:hover { background: var(--card-hover); border-color: #333; }
+  .card:active { transform: scale(.985); }
+  .num {
+    flex: 0 0 auto;
+    width: 42px; height: 42px;
+    border-radius: 14px;
+    display: grid; place-items: center;
+    background: rgba(255, 122, 26, .12);
+    color: var(--accent);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .body { flex: 1 1 auto; min-width: 0; }
+  .card-title { font-weight: 600; font-size: 16px; line-height: 1.3; }
+  .card-caption { color: var(--muted); font-size: 13px; line-height: 1.35; margin-top: 3px; }
+  .arrow { flex: 0 0 auto; color: var(--accent); }
+
+  /* 4. Подвал */
+  footer {
+    margin-top: 44px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 16px;
+  }
+  footer b { color: var(--text); font-weight: 600; }
+</style>
+</head>
+<body>
+<main class="wrap" id="app"></main>
+
+<script>
+(function () {
+  var D = window.KK_DATA;
+
+  /* ---------- Определяем, что мы внутри Телеграма ---------- */
+  var loc = String(location.hash) + String(location.search);
+  var inTelegram =
+    loc.indexOf("tgWebApp") !== -1 ||
+    typeof window.TelegramWebviewProxy !== "undefined" ||
+    !!(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.performAction);
+
+  var tg = (window.Telegram && window.Telegram.WebApp) ? window.Telegram.WebApp : null;
+
+  /* ---------- Прямая отправка событий, если объекта WebApp нет ---------- */
+  function postEvent(type, data) {
+    var payload = data ? JSON.stringify(data) : "";
+    try {
+      if (window.TelegramWebviewProxy && window.TelegramWebviewProxy.postEvent) {
+        window.TelegramWebviewProxy.postEvent(type, payload);           // Android
+      } else if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.performAction) {
+        window.webkit.messageHandlers.performAction.postMessage(
+          JSON.stringify({ eventType: type, eventData: data || {} })     // iOS
+        );
+      } else if (window.parent && window.parent !== window) {
+        window.parent.postMessage(JSON.stringify({ eventType: type, eventData: data || {} }), "*"); // Web
+      }
+    } catch (e) {}
+  }
+
+  /* ---------- Запуск ---------- */
+  var bg = D.bg || "#0A0A0A";
+  document.documentElement.style.setProperty("--bg", bg);
+  if (tg) {
+    try { tg.ready(); } catch (e) {}
+    try { tg.expand(); } catch (e) {}
+    try { tg.setHeaderColor(bg); } catch (e) {}
+    try { tg.setBackgroundColor(bg); } catch (e) {}
+    try { tg.setBottomBarColor && tg.setBottomBarColor(bg); } catch (e) {}
+  } else if (inTelegram) {
+    postEvent("web_app_ready");
+    postEvent("web_app_expand");
+    postEvent("web_app_set_header_color", { color: bg });
+    postEvent("web_app_set_background_color", { color: bg });
+  }
+
+  /* ---------- Сборка разметки из KK_DATA ---------- */
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+  var target = inTelegram ? "_self" : "_blank";
+  var rel = inTelegram ? "" : ' rel="noopener"';
+  function link(url, cls, inner) {
+    return '<a class="' + cls + '" href="' + esc(url) + '" data-url="' + esc(url) +
+      '" target="' + target + '"' + rel + '>' + inner + '</a>';
+  }
+  var arrowSvg =
+    '<svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+    '<path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  var h = "";
+  h += '<header>' +
+         '<div class="kicker">' + esc(D.header.kicker) + '</div>' +
+         '<h1><span>' + esc(D.header.titleLine1) + '</span><span>' + esc(D.header.titleLine2) + '</span></h1>' +
+         '<p class="lead">' + esc(D.header.description) + '</p>' +
+       '</header>';
+
+  h += '<section class="cta">' +
+         '<h2>' + esc(D.cta.title) + '</h2>' +
+         '<p>' + esc(D.cta.text) + '</p>' +
+         link(D.cta.url, "btn", esc(D.cta.button) + arrowSvg.replace('class="arrow"', 'class="btn-arrow"')) +
+       '</section>';
+
+  h += '<h3 class="section-title">' + esc(D.cardsTitle) + '</h3><ul class="cards">';
+  for (var i = 0; i < D.cards.length; i++) {
+    var c = D.cards[i];
+    var n = (i + 1 < 10 ? "0" : "") + (i + 1);
+    h += '<li>' + link(c.url, "card",
+           '<span class="num">' + n + '</span>' +
+           '<span class="body"><span class="card-title">' + esc(c.title) + '</span>' +
+           '<span class="card-caption" style="display:block">' + esc(c.caption) + '</span></span>' +
+           arrowSvg) +
+         '</li>';
+  }
+  h += '</ul>';
+
+  h += '<footer><b>' + esc(D.footer.name) + '</b><span>' + esc(D.footer.school) + '</span></footer>';
+
+  document.getElementById("app").innerHTML = h;
+
+  /* ---------- Клик по ссылке ---------- */
+  function openUrl(url) {
+    var isTgLink = url.indexOf("https://t.me/") === 0;
+    if (tg) {
+      if (isTgLink) {
+        // Сначала закрываем, сразу после — открываем ссылку (иначе на iPhone окно висит поверх канала)
+        try { tg.close(); } catch (e) {}
+        try { tg.openTelegramLink(url); } catch (e) {}
+      } else {
+        try { tg.openLink(url); } catch (e) { location.href = url; }
+      }
+      return true;
+    }
+    if (inTelegram) {
+      if (isTgLink) {
+        postEvent("web_app_close");
+        postEvent("web_app_open_tg_link", { path_full: url.replace("https://t.me", "") });
+      } else {
+        postEvent("web_app_open_link", { url: url });
+      }
+      return true;
+    }
+    return false; // обычный браузер: ссылка откроется сама
+  }
+
+  var links = document.querySelectorAll("a[data-url]");
+  for (var j = 0; j < links.length; j++) {
+    links[j].addEventListener("click", function (ev) {
+      var url = this.getAttribute("data-url");
+      if (!url) return;
+      if (openUrl(url)) ev.preventDefault();
+    });
+  }
+})();
+</script>
+</body>
+</html>
